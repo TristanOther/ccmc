@@ -71,6 +71,8 @@ function checkMe(checkName, name)
         ioRate = prefix..tostring(dif),
         ioColor = color
       }
+      -- Update lastCounts.
+      lastCounts[itemName] = count
     end
   end
 end
