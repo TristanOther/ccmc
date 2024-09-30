@@ -117,7 +117,7 @@ function drawScreen()
   drawText("Count", 2, colors.black, colors.white, "C")
   drawText("I/O", 2, colors.black, colors.white, "R")
   curLine = 3
-  for _, v in ipairs(toDraw) do
+  for _, v in pairs(toDraw) do
     drawText(v["itemName"], curLine, colors.black, colors.white, "L")
     drawText(v["itemCount"], curLine, colors.black, colors.blue, "C")
     drawText(v["ioRate"], curLine, colors.black, v["ioColor"], "R")
