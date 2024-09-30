@@ -57,10 +57,10 @@ function checkMe(checkName, name)
       end
       -- Add item to the list of items to draw.
       toDraw[itemName] = {
-        "name" = name,
-        "count" = round(count/factor)..suffix,
-        "io" = prefix..tostring(dif),
-        "color" = color
+        name = name,
+        count = round(count/factor)..suffix,
+        io = prefix..tostring(dif),
+        color = color
       }
     end
   end
