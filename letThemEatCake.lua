@@ -132,6 +132,3 @@ while true do
   drawScreen()
   sleep(interval)
 end
-
-      
-    
