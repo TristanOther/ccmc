@@ -2,9 +2,18 @@
 m_loc = "right" -- Which face the monitor is attached to.
 me_loc = "bottom" -- Which face the ME is attached to.
 interval = 1 -- How many seconds between refreshes.
-tracked_items = { -- List of items to display {<display_name>, <item_name>, <nbt>}.
+trackedItems = { -- List of items to display {<display_name>, <item_name>, <nbt>}.
   [1] = {"Iron Ingot", "minecraft:iron_ingot", "0"},
-  [2] = {"Pure Certus Quartz", "appliedenergistics2:item.ItemMultiMaterial", "10"}
+  [2] = {"Redstone", "minecraft:redstone", "0"},
+  [3] = {"Gold", "minecraft:gold_ingot", "0"},
+  [4] = {"Diamond", "minecraft:diamond", "0"},
+  [5] = {"Nether Quartz", "minecraft:quartz", "0"},
+  [6] = {"Glowstone Dust", "minecraft:glowstone_dust", "0"},
+  [7] = {"Coal", "minecraft:coal", "0"},
+  [8] = {"Obsidian", "minecraft:obsidian", "0"},
+  [9] = {"Yellorium Ingot", "BigReactors:BRIngot", "0"},
+  [10] = {"Certus Quartz", "appliedenergistics2:item.ItemMultiMaterial", "0"},
+  [11] =  {"Pure Certus Quartz", "appliedenergistics2:item.ItemMultiMaterial", "10"}
 }
 
 -- System variables.
@@ -48,7 +57,7 @@ function checkMe(checkName, name)
       end
       dif = math.floor(count - lastCounts[itemName])
       color = colors.blue
-      prefixn = ""
+      prefix = ""
       if dif > 0 then
         color = colors.green
         prefix = "+"
@@ -57,10 +66,10 @@ function checkMe(checkName, name)
       end
       -- Add item to the list of items to draw.
       toDraw[itemName] = {
-        name = name,
-        count = round(count/factor)..suffix,
-        io = prefix..tostring(dif),
-        color = color
+        itemName = name,
+        itemCount = round(count/factor)..suffix,
+        ioRate = prefix..tostring(dif),
+        ioColor = color
       }
     end
   end
@@ -109,17 +118,17 @@ function drawScreen()
   drawText("I/O", 2, colors.black, colors.white, "R")
   curLine = 3
   for _, v in ipairs(toDraw) do
-    drawText(v["name"], curLine, colors.black, colors.white, "L")
-    drawText(v["count"], curLine, colors.black, colors.blue, "C")
-    drawText(v["io"], curLine, colors.black, v["color"], "R")
+    drawText(v["itemName"], curLine, colors.black, colors.white, "L")
+    drawText(v["itemCount"], curLine, colors.black, colors.blue, "C")
+    drawText(v["ioRate"], curLine, colors.black, v["ioColor"], "R")
     curLine = curLine + 1
   end
 end
 
 -- Run the program.
 while true do
-  clearScreen()
   checkTable()
+  clearScreen()
   drawScreen()
   sleep(interval)
 end
