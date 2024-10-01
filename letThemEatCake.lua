@@ -1,3 +1,5 @@
+-- Program for counting items I/O of an ME system for a configurable list of items.
+
 -- User settings.
 m_loc = "right" -- Which face the monitor is attached to.
 me_loc = "bottom" -- Which face the ME is attached to.
